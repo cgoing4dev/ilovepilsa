@@ -10,7 +10,7 @@
 	</Avatar.Root>
 	<div class="w-full">
 		<div class="flex items-center text-xs text-gray-500 gap-1">
-			<h3 class="capitalize text-sm font-semibold text-white">hyeonjun choi</h3>
+			<h3 class="capitalize text-sm font-semibold">hyeonjun choi</h3>
 			<p>@cgoing4dev</p>
 			<span>&#183;</span>
 			<p>22h</p>
@@ -22,7 +22,7 @@
 		</p>
 
 		<img src="rabbit_svelte.png" alt="" class="rounded-sm object-contain w-full" />
-		<div class="flex border justify-between text-sm mt-2">
+		<div class="flex justify-between text-sm mt-2">
 			<button class="flex transition-all group items-center gap-2 text-gray-600">
 				<div class="p-1 group-hover:bg-blue-500/20 rounded-full">
 					<Heart class="group-hover:text-blue-500" />

@@ -14,11 +14,13 @@
 		<Button slot="action">Subscribe</Button>
 	</Card>
 	<Card let:Title>
-		<Title>trend for you</Title>
+		<div class="px-2">
+			<Title>trend for you</Title>
+		</div>
 		<div slot="content">
-			{#each Array(10) as _}
-				<div class="space-y-1 cursor-pointer rounded py-2 hover:bg-gray-700">
-					<div class="flex items-center gap-1 text-xs text-gray-300 capitalize">
+			{#each Array(5) as _}
+				<div class="cursor-pointer rounded py-2 hover:bg-gray-200 border p-2">
+					<div class="flex items-center gap-1 text-xs capitalize">
 						<p>music</p>
 						<p>trending</p>
 					</div>

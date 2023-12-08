@@ -7,12 +7,12 @@
 </script>
 
 <div class="w-2/3 mx-auto border">
-	<h2 class="text-2xl text-center py-10">로그인</h2>
+	<h2 class="text-2xl text-center py-10">회원가입</h2>
 	<Form.Root
 		schema={formSchema}
 		{form}
 		let:config
-		action="?/login"
+		action="?/register"
 		method="POST"
 		class="w-2/3 space-y-6 mx-auto"
 		debug={true}
@@ -33,6 +33,6 @@
 				<Form.Validation />
 			</Form.Item>
 		</Form.Field>
-		<Form.Button>로그인</Form.Button>
+		<Form.Button>회원가입</Form.Button>
 	</Form.Root>
 </div>
