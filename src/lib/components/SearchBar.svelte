@@ -2,7 +2,11 @@
 	import { Search } from 'lucide-svelte';
 </script>
 
-<div class="rounded-md h-fit flex items-center px-2 bg-gray-300 gap-2">
-	<Search class="w-5 h-5" />
-	<input type="text" placeholder="search" class="outline-none flex-1 h-10 bg-transparent" />
-</div>
+<form class="rounded-md flex items-center px-2 bg-gray-200 gap-2">
+	<Search class="w-4 h-4" />
+	<input
+		type="text"
+		placeholder="아이러브필사 검색하기"
+		class="flex-1 h-8 bg-transparent text-sm w-44 focus:w-96 outline-none"
+	/>
+</form>

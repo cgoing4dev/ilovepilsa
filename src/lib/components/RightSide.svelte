@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Card from './Card.svelte';
-	import SearchBar from './SearchBar.svelte';
 	import Button from './ui/button/button.svelte';
 </script>
 
 <div class="px-5 flex-[0.6] hidden md:inline-block border py-2 space-y-4">
-	<SearchBar />
+	<!-- <SearchBar /> -->
 	<Card let:Title>
 		<Title>Subscribe To Premium</Title>
 		<p slot="content">

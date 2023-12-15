@@ -1,54 +1,41 @@
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms/server';
-import { formSchema } from './schema';
-import { AuthApiError } from '@supabase/supabase-js';
+import type { Provider } from '@supabase/supabase-js';
 
 export const load: PageServerLoad = async ({ locals: { getSession } }) => {
-	const session = await getSession();
 	// if the user is already logged in return him to the home page
+	const session = await getSession();
 	if (session) {
 		throw redirect(303, '/');
 	}
-
-	return {
-		form: superValidate(formSchema)
-	};
 };
 
 export const actions: Actions = {
-	login: async (event) => {
-		const form = await superValidate(event, formSchema);
-		if (!form.valid) {
-			return fail(400, {
-				form
-			});
-		}
+	handleOAuthLogin: async (event) => {
+		console.log('hit server login action');
 
-		const email = form.data.email;
-		const password = form.data.password;
+		const { locals, url } = event;
 
-		const { data, error: err } = await event.locals.supabase.auth.signInWithPassword({
-			email: email,
-			password: password
+		// 소셜로그인
+		const provider = url.searchParams.get('provider') as Provider;
+
+		console.log(provider);
+
+		const { data, error: err } = await locals.supabase.auth.signInWithOAuth({
+			provider: provider
 		});
 
-		console.log('로그인 완료 : ', data);
-
 		if (err) {
-			if (err instanceof AuthApiError && err.status >= 400 && err.status < 500) {
-				return fail(400, {
-					error: 'invalidCredentials',
-					email: email,
-					invalid: true,
-					message: err.message
-				});
-			}
-			return fail(500, {
-				error: 'Server error. Please try again later.'
+			console.log(err);
+			return fail(400, {
+				message: 'Something went wrong.'
 			});
 		}
 
-		throw redirect(303, '/');
+		console.log(data);
+
+		// data.url이 소셜로그인 Provider으로의 리다이렉션 url
+		throw redirect(303, data.url);
 	}
 };
