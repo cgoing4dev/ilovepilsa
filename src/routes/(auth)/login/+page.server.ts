@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ locals: { getSession } }) => {
 	// if the user is already logged in return him to the home page
 	const session = await getSession();
 	if (session) {
-		throw redirect(303, '/');
+		redirect(303, '/');
 	}
 };
 
@@ -36,6 +36,6 @@ export const actions: Actions = {
 		console.log(data);
 
 		// data.url이 소셜로그인 Provider으로의 리다이렉션 url
-		throw redirect(303, data.url);
+		redirect(303, data.url);
 	}
 };

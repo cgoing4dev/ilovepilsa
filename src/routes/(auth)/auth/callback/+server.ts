@@ -22,14 +22,14 @@ export const GET: RequestHandler = async (event) => {
 		if (!error) {
 			if (next === '') {
 				console.log('홈으로');
-				throw redirect(303, '/');
+				redirect(303, '/');
 			} else {
 				console.log('next 페이지로');
-				throw redirect(303, `/${next}`);
+				redirect(303, `/${next}`);
 			}
 		}
 	}
 
 	// return the user to an error page with instructions
-	throw redirect(303, '/auth/auth-code-error');
+	redirect(303, '/auth/auth-code-error');
 };
